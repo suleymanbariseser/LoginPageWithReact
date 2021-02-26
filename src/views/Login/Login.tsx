@@ -23,20 +23,28 @@ const Login = () => {
             <Container size="md">
               <h1>Let's set up your account</h1>
               <p className="margin-both">
-                Already have an account? <a href="#first-container">Sign in</a>
+                Already have an account?{" "}
+                <a
+                  href="#first-container"
+                  onClick={() => alert("Direct to Sign-In Page")}
+                >
+                  Sign in
+                </a>
               </p>
               <Form
                 onSubmit={(e) => {
                   handleSubmit(e, onSubmit);
                 }}
                 buttonValue="Next"
+                valid={errors && Object.keys(errors).length === 0}
               >
+                {console.log(errors)}
                 <Input
                   type="text"
                   label="Your name"
                   name="name"
                   reference={register({ required: true })}
-                  error={errors.name}
+                  error={errors?.name}
                   invalidMessage={"Please enter a name"}
                 />
                 <Input
@@ -44,7 +52,7 @@ const Login = () => {
                   label="Email address"
                   name="email"
                   reference={register({ required: true, pattern: emailRegex })}
-                  error={errors.email}
+                  error={errors?.email}
                   invalidMessage={"Please enter a valid email address"}
                 />
                 <Select
@@ -58,7 +66,7 @@ const Login = () => {
                     { label: "Accountant", value: "Accountant" },
                     { label: "Taxi driver", value: "Driver" },
                   ]}
-                  error={errors.job}
+                  error={errors?.job}
                   placeholder="I would describe my user type as"
                   invalidMessage={"Please select a job"}
                 />
@@ -71,18 +79,24 @@ const Login = () => {
                     pattern: passwordRegex,
                   })}
                   underline="Minimum 8 characters"
-                  error={errors.password}
+                  error={errors?.password}
                   invalidMessage={"Please enter a valid password"}
                 />
               </Form>
               <p className="soft">
                 By clicking the "Next" button, you agree to creating a free
-                account, and to <a href="#hello">Terms of Service</a> and{" "}
-                <a href="#hello">Privacy Policy.</a>
+                account, and to{" "}
+                <a href="#hello" onClick={() => alert("Show Terms of Service")}>
+                  Terms of Service
+                </a>{" "}
+                and{" "}
+                <a href="#hello" onClick={() => alert("Show Privacy Policy")}>
+                  Privacy Policy.
+                </a>
               </p>
             </Container>
           </Col>
-          <Col flexSize="4" type="secondary" className="col">
+          <Col flexSize="4" type="secondary" className="col is-hidden-touch">
             <Container id="second-container" size="sm">
               <h1 className="centered">Dummy Heading</h1>
               <p className="spaced">

@@ -10,9 +10,15 @@ interface RuleType {
   pattern?: RegExp;
   required?: boolean;
 }
+// interface WatchType {
+//   name: string;
+// }
 const useForm = () => {
   const [eventListeners, setEventListeners] = useState(0); // It is number of event listeners in use.
-  const [errors, setErrors] = useState<any>({}); // store errors
+  // const [watchEventListeners, setWatchEventListeners] = useState<WatchType[]>(
+  //   []
+  // ); // It is number of event listeners in use.
+  const [errors, setErrors] = useState<any>(undefined); // store errors
   const rules: RuleType[] = []; // rules that user can add
   const refs: RefObject<HTMLInputElement | HTMLSelectElement>[] = [];
   const register = ({ required, pattern }: RuleType) => {
@@ -71,6 +77,35 @@ const useForm = () => {
     }
     setEventListeners(0);
   };
+
+  // //should be optimized
+  // const watch = (field: string) => {
+  //   const currentRef = refs?.find(({ current }) => current?.name === field);
+  //   if (currentRef && currentRef.current) {
+  //     const tempWatchEvents = [...watchEventListeners];
+  //     const tempRef = tempWatchEvents.find((item) => item.name === field);
+  //     if (!tempRef) {
+  //       tempWatchEvents.push({ name: field });
+  //       if (currentRef?.current.type === "select-one") {
+  //         // // if type of input is select then, listen it's change events.
+  //         currentRef?.current.addEventListener(
+  //           "change",
+  //           watch.bind(this, field)
+  //         );
+  //       } else {
+  //         // if type of input is text or password or email then, listen it's input event.
+  //         currentRef?.current.addEventListener(
+  //           "input",
+  //           watch.bind(this, field)
+  //         );
+  //       }
+  //       setWatchEventListeners(tempWatchEvents);
+  //     }
+  //     return currentRef.current.value;
+  //   }
+  //   return undefined;
+  // };
+  // const removeWatchEventListeners = {};
   const checkErrorValidation = () => {
     let currentErrors = {};
     for (let i = 0; i < refs.length; i++) {

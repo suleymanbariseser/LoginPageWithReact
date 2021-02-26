@@ -54,7 +54,7 @@ const InputWrapperStyle = styled.div<StyleProps>`
     appearance: none;
   }
   .alert {
-    margin-top: 6px;
+    margin-top: 0.5rem;
     color: ${invalidColor};
   }
   ${({ isValid }) =>

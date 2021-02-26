@@ -43,5 +43,10 @@ const LoginInnerWrapper = styled.div`
       margin-bottom: 0.5rem;
     }
   }
+  @media (max-width: 992px) {
+    .is-hidden-touch {
+      display: none;
+    }
+  }
 `;
 export { LoginWrapper, LoginInnerWrapper };

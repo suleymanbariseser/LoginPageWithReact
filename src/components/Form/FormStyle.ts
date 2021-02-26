@@ -15,6 +15,10 @@ const FormWrapper = styled.form`
     font-weight: 600;
     background-color: #ededed;
     border: none;
+    &.valid {
+      background-color: #286efa;
+      color: white;
+    }
   }
 `;
 export { FormWrapper };

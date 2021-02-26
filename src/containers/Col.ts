@@ -29,5 +29,8 @@ const Col = styled.div<Props>`
     color: black;
     background-color: #F9F9F9;
   `};
+  @media (max-width: 992px) {
+    flex: 0 0 100%;
+  }
 `;
 export default Col;

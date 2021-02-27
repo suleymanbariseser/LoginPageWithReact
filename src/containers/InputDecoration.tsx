@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { CSSProperties, MouseEvent } from "react";
 import styled from "styled-components";
 
 const InputDecorationStyle = styled.div`
@@ -19,11 +19,11 @@ const InputDecorationStyle = styled.div`
 type Props = {
   className: string;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
-  style?: any;
+  style?: CSSProperties;
 };
 const InputDecoration = ({ className, onClick, style }: Props) => {
   return (
-    <InputDecorationStyle>
+    <InputDecorationStyle style={style}>
       <i className={className} onClick={onClick}></i>
     </InputDecorationStyle>
   );

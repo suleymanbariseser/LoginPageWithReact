@@ -35,7 +35,7 @@ const Select = ({
     >
       <InputDecoration
         className={show ? "fas fa-chevron-up" : "fas fa-chevron-down"}
-        style={{ zIndex: "1" }}
+        style={{ zIndex: 1 }}
       />
       <select
         name={name}

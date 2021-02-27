@@ -15,6 +15,7 @@ const FormWrapper = styled.form`
     font-weight: 600;
     background-color: #ededed;
     border: none;
+    outline: none;
     &.valid {
       background-color: #286efa;
       color: white;

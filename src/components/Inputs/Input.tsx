@@ -1,3 +1,5 @@
+import { useState } from "react";
+import InputDecoration from "../../containers/InputDecoration";
 import InputWrapper from "../../containers/InputWrapper";
 
 type Props = {
@@ -18,6 +20,7 @@ const Input = ({
   invalidMessage,
   underline,
 }: Props) => {
+  const [show, setShow] = useState(false);
   return (
     <InputWrapper
       name={name}
@@ -26,7 +29,18 @@ const Input = ({
       invalidMessage={invalidMessage}
       underline={underline}
     >
-      <input name={name} ref={reference} type={type} required />
+      {type === "password" && (
+        <InputDecoration
+          className={show ? "fas fa-eye-slash" : "fas fa-eye"}
+          onClick={() => setShow(!show)}
+        />
+      )}
+      <input
+        name={name}
+        ref={reference}
+        type={type === "password" ? (show ? "password" : "text") : type}
+        required
+      />
     </InputWrapper>
   );
 };

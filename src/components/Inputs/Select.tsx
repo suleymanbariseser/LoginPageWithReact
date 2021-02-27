@@ -1,3 +1,5 @@
+import { useState } from "react";
+import InputDecoration from "../../containers/InputDecoration";
 import InputWrapper from "../../containers/InputWrapper";
 type Option = {
   label: string;
@@ -22,6 +24,8 @@ const Select = ({
   options,
   underline,
 }: Props) => {
+  const [show, setShow] = useState(false);
+
   return (
     <InputWrapper
       name={name}
@@ -29,7 +33,17 @@ const Select = ({
       invalidMessage={invalidMessage}
       underline={underline}
     >
-      <select name={name} ref={reference} defaultValue="" required>
+      <InputDecoration
+        className={show ? "fas fa-chevron-up" : "fas fa-chevron-down"}
+        style={{ zIndex: "1" }}
+      />
+      <select
+        name={name}
+        ref={reference}
+        onClick={() => setShow(!show)}
+        defaultValue=""
+        required
+      >
         <option value="" disabled hidden>
           {placeholder}
         </option>

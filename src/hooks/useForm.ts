@@ -133,7 +133,18 @@ const useForm = () => {
         };
       }
     }
-    setErrors(currentErrors); // set errors
+    setErrors((error: any) => {
+      // if previous state is undefined and currentErrors has no element OR previous state equals to next state
+      // then dont update. Otherwise, update
+      if (
+        (!error && Object.keys(currentErrors).length === 0) ||
+        JSON.stringify(error) === JSON.stringify(currentErrors)
+      ) {
+        return error;
+      } else {
+        return currentErrors;
+      }
+    }); // set errors
     return Object.keys(currentErrors).length !== 0;
   };
   return { errors, register, handleSubmit };

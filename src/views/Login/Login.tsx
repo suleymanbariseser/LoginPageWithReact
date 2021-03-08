@@ -38,7 +38,6 @@ const Login = () => {
                 buttonValue="Next"
                 valid={errors && Object.keys(errors).length === 0}
               >
-                {console.log(errors)}
                 <Input
                   type="text"
                   label="Your name"
